@@ -1,89 +1,99 @@
 // components/Fleet.tsx
-import { Users, Luggage, CheckCircle, MessageCircle } from "lucide-react"
-import { fleet, siteConfig } from "@/lib/data"
+"use client"
+
+import { Users, Luggage } from "lucide-react"
+import { fleetCategories, siteConfig } from "@/lib/data"
 
 export default function Fleet() {
+  const handleBook = (name: string) => {
+    const text = `Bonjour, je souhaite réserver le ${name}.`
+    window.open(
+      `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(text)}`,
+      "_blank"
+    )
+  }
+
+  const handleDetails = (name: string) => {
+    const text = `Bonjour, je souhaite plus de détails sur le ${name}.`
+    window.open(
+      `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(text)}`,
+      "_blank"
+    )
+  }
+
   return (
-    <section id="fleet" className="bg-black py-24 px-4">
+    <section id="fleet" className="bg-white py-20 px-4">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-4">
-            Notre Flotte
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            Nos Vans Premium
-          </h2>
-          <div className="w-12 h-px bg-[#C9A84C] mx-auto mt-6" />
-        </div>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-3">
+          {"NOTRE FLOTTE"}
+        </h2>
+        <p className="text-[#6B7280] text-sm text-center mb-14 max-w-xl mx-auto">
+          {"Choisissez parmi notre gamme de vans et minibus soigneusement entretenus, adaptés à vos besoins."}
+        </p>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {fleet.map((van) => (
-            <div
-              key={van.id}
-              className="group border border-white/10 hover:border-[#C9A84C]/50 bg-white/5 overflow-hidden transition-all duration-300"
-            >
-              {/* Image */}
-              <div className="relative overflow-hidden h-56">
-                <img
-                  src={van.image}
-                  alt={van.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+        {fleetCategories.map((category) => (
+          <div key={category.id} className="mb-14">
 
-                {/* Van name over image */}
-                <div className="absolute bottom-4 left-6">
-                  <h3 className="text-white font-bold text-xl tracking-wide">
-                    {van.name}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Details */}
-              <div className="p-6">
-
-                {/* Capacity & Luggage */}
-                <div className="flex items-center gap-6 mb-6 text-white/60 text-sm">
-                  <span className="flex items-center gap-2">
-                    <Users size={16} className="text-[#C9A84C]" />
-                    {van.capacity} passagers
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Luggage size={16} className="text-[#C9A84C]" />
-                    {van.luggage} bagages
-                  </span>
-                </div>
-
-                {/* Amenities */}
-                <ul className="flex flex-col gap-2 mb-8">
-                  {van.amenities.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-white/50 text-sm">
-                      <CheckCircle size={14} className="text-[#C9A84C] shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a
-                  href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-                    `Bonjour, je souhaite réserver le ${van.name}.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 border border-[#C9A84C] text-[#C9A84C] px-6 py-3 text-sm tracking-wide hover:bg-[#C9A84C] hover:text-black transition-all duration-200 w-full"
-                >
-                  <MessageCircle size={16} />
-                  Réserver ce van
-                </a>
-
-              </div>
+            {/* Category header */}
+            <div className="bg-[#F5F5F3] rounded-lg text-center py-4 mb-8">
+              <h3 className="text-black font-bold text-lg">{category.name}</h3>
+              <p className="text-[#6B7280] text-xs italic mt-1">{category.description}</p>
             </div>
-          ))}
-        </div>
+
+            {/* Vehicles grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {category.vehicles.map((v) => (
+                <div key={v.id} className="border border-[#E5E5E5] rounded-lg overflow-hidden">
+
+                  {/* Image with passenger/luggage badge */}
+                  <div className="relative h-44 bg-[#F5F5F3]">
+                    <img src={v.image} alt={v.name} className="w-full h-full object-cover" />
+                    <div className="absolute top-3 left-3 flex gap-2">
+                      <span className="bg-white/90 text-black text-xs font-medium rounded px-2 py-1 flex items-center gap-1">
+                        <Users size={12} />{v.passengers}
+                      </span>
+                      <span className="bg-white/90 text-black text-xs font-medium rounded px-2 py-1 flex items-center gap-1">
+                        <Luggage size={12} />{v.luggage}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Details */}
+                  <div className="p-5">
+                    <h4 className="text-black font-bold text-base mb-2">{v.name}</h4>
+                    <span className="inline-block bg-[#F5F5F3] text-[#6B7280] text-xs rounded px-2 py-1 mb-4">
+                      {v.badge}
+                    </span>
+
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 mb-5">
+                      {v.amenities.map((a) => (
+                        <span key={a} className="text-[#6B7280] text-xs">{a}</span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleBook(v.name)}
+                        className="flex-1 bg-black hover:bg-[#222] text-white text-xs font-semibold rounded px-3 py-2.5 transition-colors duration-200"
+                      >
+                        {"Réserver"}
+                      </button>
+                      <button
+                        onClick={() => handleDetails(v.name)}
+                        className="flex-1 border border-[#E5E5E5] hover:border-black text-black text-xs font-semibold rounded px-3 py-2.5 transition-colors duration-200"
+                      >
+                        {"Voir Détails"}
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+
+          </div>
+        ))}
 
       </div>
     </section>

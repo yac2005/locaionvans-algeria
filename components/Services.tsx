@@ -1,56 +1,44 @@
 // components/Services.tsx
-import { Globe, Plane, Users, Sun, Map } from "lucide-react"
 import { services } from "@/lib/data"
-
-const iconMap: Record<string, React.ReactNode> = {
-  globe: <Globe size={28} />,
-  plane: <Plane size={28} />,
-  users: <Users size={28} />,
-  sun: <Sun size={28} />,
-  map: <Map size={28} />,
-}
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#0a0a0a] py-24 px-4">
+    <section id="services" className="bg-white py-20 px-4">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-4">
-            Ce que nous offrons
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            Nos Services
-          </h2>
-          <div className="w-12 h-px bg-[#C9A84C] mx-auto mt-6" />
-        </div>
+        <p className="text-[#C9A84C] text-sm italic text-center mb-2">
+          {"Solutions de transport professionnelles"}
+        </p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-12 tracking-wide">
+          {"NOS SERVICES"}
+        </h2>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <div
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, i) => (
+            <a
               key={service.id}
-              className="group border border-white/10 hover:border-[#C9A84C]/50 bg-white/5 hover:bg-white/[0.07] p-8 transition-all duration-300"
+              href="#contact"
+              className={`group relative rounded-lg overflow-hidden h-64 ${
+                i === services.length - 1 && services.length % 3 === 1 ? "sm:col-span-2 lg:col-span-1" : ""
+              }`}
             >
-              {/* Icon */}
-              <div className="text-[#C9A84C] mb-6 transition-transform duration-300 group-hover:scale-110">
-                {iconMap[service.icon]}
+              <img
+                src={service.image}
+                alt={service.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+              <div className="absolute bottom-0 left-0 p-6">
+                <h3 className="text-white font-bold text-xl mb-1">
+                  {service.title}
+                </h3>
+                <p className="text-white/70 text-sm flex items-center gap-1">
+                  {service.subtitle}
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">{"→"}</span>
+                </p>
               </div>
-
-              {/* Title */}
-              <h3 className="text-white font-semibold text-lg mb-3 tracking-wide">
-                {service.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-white/50 text-sm leading-relaxed">
-                {service.description}
-              </p>
-
-              {/* Bottom accent */}
-              <div className="w-0 group-hover:w-8 h-px bg-[#C9A84C] mt-6 transition-all duration-300" />
-            </div>
+            </a>
           ))}
         </div>
 

@@ -1,45 +1,58 @@
 // components/Coverage.tsx
-import { MapPin } from "lucide-react"
-import { wilayas } from "@/lib/data"
+import { Building2 } from "lucide-react"
+import { coverageRegions, branchOffices, otherCities } from "@/lib/data"
 
 export default function Coverage() {
   return (
-    <section id="coverage" className="bg-[#0a0a0a] py-24 px-4">
+    <section className="bg-[#0A0A0A] py-20 px-4">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-4">
-            {"Nos Destinations"}
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            {"Nous Couvrons l'Algérie"}
-          </h2>
-          <div className="w-12 h-px bg-[#C9A84C] mx-auto mt-6" />
-          <p className="text-white/50 text-sm mt-6 max-w-xl mx-auto">
-            {"De l'est à l'ouest, du nord au sahara — nous assurons vos transferts à travers toutes les wilayas."}
-          </p>
+        {/* Header row */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-12">
+          <div>
+            <p className="text-[#C9A84C] text-sm italic mb-2">{"Notre présence"}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">
+              {"COUVERTURE NATIONALE"}
+            </h2>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {coverageRegions.map((r) => (
+              <div key={r.name} className="border border-white/15 rounded px-4 py-2 text-center">
+                <p className="text-white text-sm font-semibold">{r.name}</p>
+                <p className="text-white/40 text-xs">{r.cities}{" wilayas"}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Wilayas Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {wilayas.map((wilaya) => (
+        {/* Branch offices */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          {branchOffices.map((b) => (
             <div
-              key={wilaya}
-              className="group flex items-center gap-3 border border-white/10 hover:border-[#C9A84C]/50 bg-white/5 hover:bg-white/[0.07] px-4 py-3 transition-all duration-300"
+              key={b.city}
+              className="border border-white/15 rounded-lg px-5 py-4 flex items-center gap-4"
             >
-              <MapPin size={14} className="text-[#C9A84C] shrink-0" />
-              <span className="text-white/60 group-hover:text-white text-sm tracking-wide transition-colors duration-200">
-                {wilaya}
-              </span>
+              <Building2 size={20} className="text-[#C9A84C] shrink-0" />
+              <div>
+                <p className="text-white/50 text-xs mb-0.5">{"Agence "}{b.city}</p>
+                <p className="text-white font-semibold text-sm">{b.service}</p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom note */}
-        <p className="text-center text-white/30 text-xs tracking-widest uppercase mt-12">
-          {"Votre wilaya n'est pas listée ? Contactez-nous directement."}
-        </p>
+        {/* Other cities */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10">
+          {otherCities.map((city) => (
+            <div key={city} className="text-center sm:text-left">
+              <p className="text-white text-sm font-medium mb-1">{city}</p>
+              <a href="#contact" className="text-white/40 hover:text-[#C9A84C] text-xs transition-colors duration-200">
+                {"Voir les services"}{" →"}
+              </a>
+            </div>
+          ))}
+        </div>
 
       </div>
     </section>

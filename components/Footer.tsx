@@ -1,6 +1,5 @@
 // components/Footer.tsx
-import { Phone, MessageCircle } from "lucide-react"
-import { siteConfig } from "@/lib/data"
+import { siteConfig, otherCities } from "@/lib/data"
 
 function InstagramIcon() {
   return (
@@ -22,105 +21,99 @@ function FacebookIcon() {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] border-t border-[#C9A84C]/20 pt-16 pb-8 px-4">
+    <footer className="bg-[#0A0A0A] pt-16 pb-8 px-4">
       <div className="max-w-7xl mx-auto">
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold tracking-widest text-[#C9A84C] mb-2">
+            <h3 className="text-xl font-bold tracking-widest text-white mb-1">
               {"LONAD DZ"}
             </h3>
-            <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-4">
-              {"Van Rental"}
+            <p className="text-[#C9A84C] text-[10px] tracking-[0.25em] uppercase mb-4">
+              {"Premium Van Rental"}
             </p>
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              {"Transport premium en Algérie. Confort, sécurité et professionnalisme à chaque trajet."}
+            <p className="text-white/40 text-sm leading-relaxed mb-4">
+              {"LONAD DZ fournit un transport premium à travers l'Algérie. Confort, sécurité, professionnalisme."}
             </p>
+            <div className="flex gap-3">
+            <a  
+                href="https://www.facebook.com/Lonaddz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/40 hover:text-white transition-colors duration-200"
+                aria-label="Facebook"
+              >
+                <FacebookIcon />
+              </a>
+             <a 
+                href="https://www.instagram.com/locationvans_algeria"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/40 hover:text-white transition-colors duration-200"
+                aria-label="Instagram"
+              >
+                <InstagramIcon />
+              </a>
+            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Top cities */}
           <div>
-            <h4 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">
-              {"Navigation"}
+            <h4 className="text-white font-semibold text-sm tracking-widest uppercase mb-5">
+              {"Villes Principales"}
             </h4>
-            <div className="flex flex-col gap-3">
-              <a href="#services" className="text-white/50 hover:text-[#C9A84C] text-sm transition-colors duration-200">
-                {"Services"}
-              </a>
-              <a href="#fleet" className="text-white/50 hover:text-[#C9A84C] text-sm transition-colors duration-200">
-                {"Nos Vans"}
-              </a>
-              <a href="#coverage" className="text-white/50 hover:text-[#C9A84C] text-sm transition-colors duration-200">
-                {"Destinations"}
-              </a>
-              <a href="#testimonials" className="text-white/50 hover:text-[#C9A84C] text-sm transition-colors duration-200">
-                {"Avis"}
-              </a>
-              <a href="#about" className="text-white/50 hover:text-[#C9A84C] text-sm transition-colors duration-200">
-                {"À Propos"}
-              </a>
+            <div className="grid grid-cols-2 gap-2">
+              {otherCities.slice(0, 6).map((city) => (
+                <span key={city} className="text-white/40 text-sm">{city}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Links */}
+          <div>
+            <h4 className="text-white font-semibold text-sm tracking-widest uppercase mb-5">
+              {"Liens Utiles"}
+            </h4>
+            <div className="flex flex-col gap-2">
+              <a href="#" className="text-white/40 hover:text-white text-sm transition-colors duration-200">{"À Propos"}</a>
+              <a href="#fleet" className="text-white/40 hover:text-white text-sm transition-colors duration-200">{"Notre Flotte"}</a>
+              <a href="#contact" className="text-white/40 hover:text-white text-sm transition-colors duration-200">{"Contact"}</a>
+              <a href="#testimonials" className="text-white/40 hover:text-white text-sm transition-colors duration-200">{"Avis"}</a>
             </div>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">
-              {"Contact"}
+            <h4 className="text-white font-semibold text-sm tracking-widest uppercase mb-5">
+              {"Nous Contacter"}
             </h4>
-            <div className="flex flex-col gap-3">
-             <a 
+            <div className="flex flex-col gap-2">
+              <a href={`tel:${siteConfig.phone}`} className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                {siteConfig.phone}
+              </a>
+              <a
                 href={`https://wa.me/${siteConfig.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-white/50 hover:text-[#C9A84C] text-sm transition-colors duration-200"
+                className="text-white/40 hover:text-white text-sm transition-colors duration-200"
               >
-                <MessageCircle size={14} />
-                {siteConfig.whatsapp}
+                {"WhatsApp"}
               </a>
-              <a
-                href={`tel:${siteConfig.phone}`}
-                className="flex items-center gap-2 text-white/50 hover:text-[#C9A84C] text-sm transition-colors duration-200"
-              >
-                <Phone size={14} />
-                {siteConfig.phone}
-              </a>
-
-              {/* Socials */}
-              <div className="flex gap-3 mt-4">
-                <a
-                  href="https://www.facebook.com/Lonaddz/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-white/10 hover:border-[#C9A84C] text-white/50 hover:text-[#C9A84C] p-2 transition-all duration-200"
-                  aria-label="Facebook"
-                >
-                  <FacebookIcon />
-                </a>
-                <a
-                  href="https://www.instagram.com/locationvans_algeria"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-white/10 hover:border-[#C9A84C] text-white/50 hover:text-[#C9A84C] p-2 transition-all duration-200"
-                  aria-label="Instagram"
-                >
-                  <InstagramIcon />
-                </a>
-              </div>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-xs tracking-wide">
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-white/30 text-xs">
             {"© 2026 LONAD DZ. Tous droits réservés."}
           </p>
-          <p className="text-white/20 text-xs tracking-wide">
-            {"Premium Transportation Company in Algeria"}
-          </p>
+          <div className="flex gap-5 text-white/30 text-xs">
+            <a href="#" className="hover:text-white/60 transition-colors duration-200">{"Conditions"}</a>
+            <a href="#" className="hover:text-white/60 transition-colors duration-200">{"Confidentialité"}</a>
+          </div>
         </div>
 
       </div>

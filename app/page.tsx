@@ -2,12 +2,12 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Partners from '@/components/Partners'
+import BookingBar from '@/components/BookingBar'
 import Services from '@/components/Services'
+import Testimonials from '@/components/Testimonials'
 import Fleet from '@/components/Fleet'
 import Coverage from '@/components/Coverage'
-import Testimonials from '@/components/Testimonials'
-import About from '@/components/About'
-import Contact from '@/components/Contact'
+import WaysToBook from '@/components/WaysToBook'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -16,14 +16,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Partners />
+      <BookingBar />
       <Services />
+      <Testimonials />
       <Fleet />
       <Coverage />
-      <Testimonials />
-      <About />
-      <Contact />
+      <WaysToBook />
       <Footer />
-
     </main>
   )
 }

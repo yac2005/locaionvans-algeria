@@ -1,67 +1,35 @@
 // components/About.tsx
-import { Shield, BadgeCheck, Clock, Sparkles, Armchair } from "lucide-react"
+import { Truck, Headset, HandCoins } from "lucide-react"
 import { whyUs } from "@/lib/data"
 
-const iconMap: Record<string, React.ReactNode> = {
-  armchair: <Armchair size={22} />,
-  shield: <Shield size={22} />,
-  "badge-check": <BadgeCheck size={22} />,
-  clock: <Clock size={22} />,
-  star: <Sparkles size={22} />,
-}
+const icons = [Truck, Headset, HandCoins]
 
 export default function About() {
   return (
-    <section id="about" className="bg-[#0a0a0a] py-24 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="bg-[#F7F8FA] py-20 px-4">
+      <div className="max-w-7xl mx-auto">
 
-        {/* Left: Story */}
-        <div>
-          <p className="text-[#C9A84C] text-xs tracking-[0.4em] uppercase mb-4">
-            {"Qui Sommes-Nous"}
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            {"Votre Partenaire de Confiance en Algérie"}
-          </h2>
-          <p className="text-white/50 text-base leading-relaxed mb-6">
-            {"LONAD DZ fournit des services de transport confortables, fiables et bien organisés pour le tourisme, les transferts aéroport et les voyages privés à travers toute l'Algérie."}
-          </p>
-          <p className="text-white/50 text-base leading-relaxed">
-            {"Notre engagement envers la qualité, la sécurité et la ponctualité fait de nous le choix privilégié des particuliers, entreprises et agences de voyage."}
-          </p>
+        {/* Header */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1F3D] text-center mb-12">
+          {"Pourquoi Nous Choisir"}
+        </h2>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 mt-12">
-            <div>
-              <p className="text-3xl font-bold text-[#C9A84C]">500+</p>
-              <p className="text-white/40 text-xs tracking-widest uppercase mt-1">{"Trajets"}</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-[#C9A84C]">48</p>
-              <p className="text-white/40 text-xs tracking-widest uppercase mt-1">{"Wilayas"}</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-[#C9A84C]">5★</p>
-              <p className="text-white/40 text-xs tracking-widest uppercase mt-1">{"Satisfaction"}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Why Us grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {whyUs.map((item) => (
-            <div
-              key={item.label}
-              className="border border-white/10 hover:border-[#C9A84C]/50 bg-white/5 hover:bg-white/[0.07] p-6 transition-all duration-300"
-            >
-              <div className="text-[#C9A84C] mb-4">
-                {iconMap[item.icon]}
+        {/* 3 points */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+          {whyUs.map((item, i) => {
+            const Icon = icons[i]
+            return (
+              <div key={item.title} className="flex flex-col gap-3">
+                <Icon size={28} className="text-[#E8650A]" />
+                <h3 className="text-base font-bold text-[#0F1F3D]">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-[#6B7280] leading-relaxed">
+                  {item.description}
+                </p>
               </div>
-              <p className="text-white font-medium text-sm tracking-wide">
-                {item.label}
-              </p>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
       </div>

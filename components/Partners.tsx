@@ -1,35 +1,19 @@
 // components/Partners.tsx
-"use client"
-
 import { partners } from "@/lib/data"
 
 export default function Partners() {
-  // Duplicate for seamless infinite scroll
-  const doubled = [...partners, ...partners]
-
   return (
-    <section className="bg-black border-y border-[#C9A84C]/20 py-6 overflow-hidden">
-
-      {/* Label */}
-      <p className="text-center text-[10px] tracking-[0.4em] text-white/30 uppercase mb-6">
-        Ils nous font confiance
-      </p>
-
-      {/* Marquee */}
-      <div className="relative flex">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {doubled.map((partner, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center gap-3 mx-10 text-white/50 hover:text-[#C9A84C] transition-colors duration-200 text-sm tracking-widest uppercase font-medium"
-            >
-              <span className="text-[#C9A84C] text-xs">◆</span>
-              {partner}
-            </span>
-          ))}
-        </div>
+    <section className="bg-[#0A0A0A] py-6 px-4 border-b border-white/10">
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+        {partners.map((partner) => (
+          <span
+            key={partner}
+            className="text-white/30 text-sm font-semibold tracking-wide uppercase"
+          >
+            {partner}
+          </span>
+        ))}
       </div>
-
     </section>
   )
 }
