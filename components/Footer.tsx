@@ -29,13 +29,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-xl font-bold tracking-widest text-white mb-1">
-              {"Location DZ"}
+              {"Location Vans DZ"}
             </h3>
             <p className="text-[#C9A84C] text-[10px] tracking-[0.25em] uppercase mb-4">
               {"Premium Van Rental"}
             </p>
             <p className="text-white/40 text-sm leading-relaxed mb-4">
-              {"LONAD DZ fournit un transport premium à travers l'Algérie. Confort, sécurité, professionnalisme."}
+              {"LOCATION VANS DZ fournit un transport premium à travers l'Algérie. Confort, sécurité, professionnalisme."}
             </p>
             <div className="flex gap-3">
             <a  
@@ -108,7 +108,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/30 text-xs">
-            {"© 2026 LONAD DZ. Tous droits réservés."}
+            {"© 2026 Location Vans DZ. Tous droits réservés."}
           </p>
           <div className="flex gap-5 text-white/30 text-xs">
             <a href="#" className="hover:text-white/60 transition-colors duration-200">{"Conditions"}</a>
