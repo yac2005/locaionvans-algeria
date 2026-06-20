@@ -31,7 +31,7 @@ export default function Hero() {
           </p>
 
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-3">
-            {"Location DZ"}
+            {"LOCATION VANS DZ"}
           </h1>
 
           <p className="text-[#C9A84C] text-base sm:text-lg mb-5">
