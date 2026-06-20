@@ -34,7 +34,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex flex-col leading-none">
             <span className="text-lg font-bold tracking-widest text-white">
-              {"Location DZ"}
+              {"LOCATION VANS DZ"}
             </span>
             <span className="text-[9px] tracking-[0.25em] text-[#C9A84C] uppercase">
               {"Van Rental"}
